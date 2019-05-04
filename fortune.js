@@ -41,7 +41,7 @@ async function onMessage(m) {
   if (room) {
     const alias = (await room.alias(contact)) || contact.name();
     if (stars.includes(m.text().toLowerCase())) {
-      const fortuneArr = await getFortune(m.text());
+      const fortuneArr = await getFortune(m.text().trim());
 
       const fortune = fortuneArr[0];
       const { summary, stats, love, career, money, health } = fortune;
