@@ -39,13 +39,24 @@ async function onMessage(m) {
   const room = m.room();
   const contact = m.from();
   if (room) {
-    const alias = (await room.alias(contact)) || contact.name();
-    if (stars.includes(m.text().toLowerCase())) {
+    const restricted = ["爹", "爸爸", "爸", "老爸", "爹爹"];
+    let roomAlias = (await room.alias(contact)) || contact.name();
+    if (restricted.includes(roomAlias)) {
+      roomAlias = "乖儿子";
+    }
+    if (
+      stars.includes(
+        m
+          .text()
+          .toLowerCase()
+          .trim()
+      )
+    ) {
       const fortuneArr = await getFortune(m.text());
 
       const fortune = fortuneArr[0];
       const { summary, stats, love, career, money, health } = fortune;
-      room.say(`${alias}, ${fortune.title}：
+      room.say(`${roomAlias}, ${fortune.title}：
 
         ${summary.title}(${getStar(stats.general.score)})： ${summary.content}
 
