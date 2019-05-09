@@ -53,7 +53,12 @@ async function onMessage(m) {
       )
     ) {
       console.log("Loading....");
-      const fortuneArr = await getFortune(m.text());
+      const fortuneArr = await getFortune(
+        m
+          .text()
+          .toLowerCase()
+          .trim()
+      );
 
       const fortune = fortuneArr[0];
       const { summary, stats, love, career, money, health } = fortune;
