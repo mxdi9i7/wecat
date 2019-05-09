@@ -52,6 +52,7 @@ async function onMessage(m) {
           .trim()
       )
     ) {
+      console.log("Loading....");
       const fortuneArr = await getFortune(m.text());
 
       const fortune = fortuneArr[0];
