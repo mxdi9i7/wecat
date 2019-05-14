@@ -82,7 +82,7 @@ async function onMessage(m) {
   }
 }
 
-const bot = new Wechaty();
+const bot = new Wechaty({ name: "wecat" });
 
 bot.on("scan", onScan);
 bot.on("login", onLogin);
